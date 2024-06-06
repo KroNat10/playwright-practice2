@@ -48,4 +48,13 @@ export class HomePage {
     const input = product.toString();
     await expect(this.productTitle).toHaveText(input);
   }
+
+  async goToProductDetailViaButton() {
+    await this.productDetailButton.click();
+    await expect(this.page).toHaveURL(new RegExp(urlPath.productDetailPage));
+  }
+
+  async verifyComplaintUrl() {
+    await expect(this.page).toHaveURL(new RegExp(urlPaths.productDetail));
+  }
 }

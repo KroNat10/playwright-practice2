@@ -1,3 +1,4 @@
 {
-  "homePageUrl": "https://www.online-shopping.cz"
+  "homePageUrl": "https://www.online-shopping.cz",
+  "productDetail": "https://www.online-shopping.cz.*"
 }
