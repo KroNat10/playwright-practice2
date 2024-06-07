@@ -42,6 +42,8 @@ export class ProductDetailPage {
 
   async addToCart() {
     await this.addToCartButton.click();
-    await expect(this.flashMessage).toHaveText(texts."informationProductWasAddedIntoCart)
+    await expect(this.flashMessage).toHaveText(
+      texts.informationProductWasAddedIntoCart
+    );
   }
 }

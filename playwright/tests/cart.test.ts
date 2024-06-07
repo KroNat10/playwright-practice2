@@ -24,5 +24,38 @@ test.describe('Cart test', () => {
       const productDetailPage = new ProductDetailPage(page);
       await productDetailPage.addToCart();
     });
+
+    await test.step('Verify amount of items in cart', async () => {
+      const cartPage = new CartPage(page);
+      await cartPage.amountOfProductsInCartShouldBe(1);
+    });
+
+    await test.step('Add second product to cart', async () => {
+      const productDetailPage = new ProductDetailPage(page);
+      await productDetailPage.addToCart();
+    });
+
+    await test.step('Verify amount of items in cart', async () => {
+      const cartPage = new CartPage(page);
+      await cartPage.amountOfProductsInCartShouldBe(2);
+    });
+
+    await test.step('Verify products in cart', async () => {
+      const cartPage = new CartPage(page);
+      await cartPage.verifyAmountOfProductInCart('Tvaroh plnotučný', 1);
+      await cartPage.verifyAmountOfProductInCart('Random produkt', 1);
+    });
+
+    await test.step('Add two more products to cart', async () => {
+      const productDetailPage = new ProductDetailPage(page);
+      await productDetailPage.addToCart();
+      await productDetailPage.addToCart();
+    });
+
+    await test.step('Verify new amount of products in cart', async () => {
+      const cartPage = new CartPage(page);
+      await cartPage.verifyAmountOfProductInCart('Tvaroh plnotučný', 3);
+      await cartPage.verifyAmountOfProductInCart('Random produkt', 1);
+    });
   });
 });
