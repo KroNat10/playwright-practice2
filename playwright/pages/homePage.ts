@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import urlPath from './test-data/urlPath.json';
+import urlPaths from './test-data/urlPath.json';
 
 export class HomePage {
   readonly page: Page;

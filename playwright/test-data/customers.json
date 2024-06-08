@@ -1,0 +1,9 @@
+{
+  "customer1": {
+    "email": "customer1@test.cz",
+    "name": "Zuzana",
+    "lastname": "Appliftingová",
+    "phone": "721560891",
+    "address": "Komenského 200, 16000 Praha"
+  }
+}

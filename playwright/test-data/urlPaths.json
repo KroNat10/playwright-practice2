@@ -1,5 +1,9 @@
 {
   "homePageUrl": "https://www.online-shopping.cz",
   "productDetail": "https://www.online-shopping.cz.*",
-  "cartDetail": "https://www.online-shopping.cz/cart"
+  "cartDetail": "https://www.online-shopping.cz/cart",
+  "checkoutStep1": "https://www.online-shopping.cz/checkout-payment-and-delivery",
+  "checkoutStep2": "https://www.online-shopping.cz/checkout-delivery-details",
+  "checkoutStep3": "https://www.online-shopping.cz/checkout-summary-of-order",
+  "checkoutStep4": "https://www.online-shopping.cz/checkout-finished-order"
 }

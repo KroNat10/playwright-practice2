@@ -1,6 +1,6 @@
 import { Locator, Page, expect } from '@playwright/test';
 import texts from './test-data/texts.json';
-import urlPath from './test-data/urlPath.json';
+import urlPaths from './test-data/urlPaths.json';
 
 export class CartPage {
   readonly page: Page;
@@ -13,6 +13,7 @@ export class CartPage {
   readonly binButton: Locator;
   readonly confirmRemoveButton: Locator;
   readonly cart: Locator;
+  readonly checkoutButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -27,6 +28,7 @@ export class CartPage {
     this.binButton = page.getByTestId('bin-button');
     this.confirmRemoveButton = page.getByTestId('confirm-remove-button');
     this.cart = page.getByTestId('cart');
+    this.checkoutButton = page.getByTestId('checkout-button');
   }
 
   async amountOfProductsInCartShouldBe(count) {
@@ -61,5 +63,10 @@ export class CartPage {
     await expect(this.productsInCart).toBeEmpty();
     await expect(this.totalPrice).toBeEmpty();
     await expect(this.cart).toHaveText(texts.emptyCart);
+  }
+
+  async goToCheckout() {
+    await this.checkoutButton.click();
+    await expect(this.page).toHaveURL(urlPath.checkoutStep1);
   }
 }
