@@ -11,6 +11,8 @@ export class CartPage {
   readonly addButton: Locator;
   readonly minusButton: Locator;
   readonly binButton: Locator;
+  readonly confirmRemoveButton: Locator;
+  readonly cart: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +25,8 @@ export class CartPage {
     this.addButton = page.getByTestId('add-button');
     this.minusButton = page.getByTestId('minus-button');
     this.binButton = page.getByTestId('bin-button');
+    this.confirmRemoveButton = page.getByTestId('confirm-remove-button');
+    this.cart = page.getByTestId('cart');
   }
 
   async amountOfProductsInCartShouldBe(count) {
@@ -47,6 +51,15 @@ export class CartPage {
   }
 
   async removeProductFromCart(productName: string) {
+    await expect(this.productsInCart).toHaveText(productName);
     await this.minusButton.click();
+    await this.confirmRemoveButton.click();
+    await expect(this.productsInCart).not.toHaveText(productName);
+  }
+
+  async verifyEmptyCart() {
+    await expect(this.productsInCart).toBeEmpty();
+    await expect(this.totalPrice).toBeEmpty();
+    await expect(this.cart).toHaveText(texts.emptyCart);
   }
 }

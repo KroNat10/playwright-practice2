@@ -57,5 +57,11 @@ test.describe('Cart test', () => {
       await cartPage.verifyAmountOfProductInCart('Tvaroh plnotučný', 3);
       await cartPage.verifyAmountOfProductInCart('Random produkt', 1);
     });
+
+    await test.step('Remove products from cart', async () => {
+      const cartPage = new CartPage(page);
+      await cartPage.removeProductFromCart('Tvaroh plnotučný');
+      await cartPage.removeProductFromCart('Random produkt');
+    });
   });
 });
