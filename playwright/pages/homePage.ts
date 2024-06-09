@@ -30,28 +30,26 @@ export class HomePage {
 
   async goToHomePage() {
     await this.page.goto('https://www.online-shopping.cz');
-    await expect(this.page).toHaveURL(urlPath.homePage);
+    await expect(this.page).toHaveURL(urlPaths.homePageUrl);
   }
 
   async goToHomePageViaButton() {
     await this.homePageButton.click();
-    await expect(this.page).toHaveURL(urlPath.homePage);
+    await expect(this.page).toHaveURL(urlPaths.homePageUrl);
   }
 
   async searchForProduct(product: any) {
-    const input = product.toString();
     await this.searchBar.fill(product);
     await this.page.keyboard.press('Enter');
   }
 
   async verifySearchResults(product: any) {
-    const input = product.toString();
-    await expect(this.productTitle).toHaveText(input);
+    await expect(this.productTitle).toHaveText(product);
   }
 
   async goToProductDetailViaButton() {
     await this.productDetailButton.click();
-    await expect(this.page).toHaveURL(new RegExp(urlPath.productDetailPage));
+    await expect(this.page).toHaveURL(new RegExp(urlPaths.productDetail));
   }
 
   async verifyComplaintUrl() {

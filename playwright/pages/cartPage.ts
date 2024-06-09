@@ -31,13 +31,13 @@ export class CartPage {
     this.checkoutButton = page.getByTestId('checkout-button');
   }
 
-  async amountOfProductsInCartShouldBe(count) {
+  async amountOfProductsInCartShouldBe(count: number) {
     await expect(this.cartButtonInHeaderCount).toHaveText(count.toString());
   }
 
   async goToCart() {
     await this.cartButtonInHeader.click();
-    await expect(this.page).toHaveURL(urlPath.cartDetail);
+    await expect(this.page).toHaveURL(urlPaths.cartDetail);
   }
 
   async verifyProductInCart(productName: string) {
@@ -67,6 +67,6 @@ export class CartPage {
 
   async goToCheckout() {
     await this.checkoutButton.click();
-    await expect(this.page).toHaveURL(urlPath.checkoutStep1);
+    await expect(this.page).toHaveURL(urlPaths.checkoutStep1);
   }
 }

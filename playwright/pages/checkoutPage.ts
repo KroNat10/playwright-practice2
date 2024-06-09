@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import urlPaths from './test-data/urlPath.json';
+import urlPaths from './test-data/urlPaths.json';
 
 export class CheckoutPage {
   readonly page: Page;
@@ -10,10 +10,10 @@ export class CheckoutPage {
   readonly lastnameInput: Locator;
   readonly emailInput: Locator;
   readonly phoneInput: Locator;
-  readonly addressInput: Locator;
+  readonly addressInput: Locator; //Adress of Zásilkovna branch
   readonly summaryOfOrderButton: Locator;
   readonly finishingOrderButton: Locator;
-  readonly deliveryAdressInput: Locator;
+  readonly deliveryAdressInput: Locator; //Delivery customers details adress
 
   constructor(page: Page) {
     this.page = page;
@@ -37,6 +37,7 @@ export class CheckoutPage {
     await this.deliveryRadionButton.isChecked();
   }
 
+  //Adress of Zásilkovna branch
   async selectDeliveryAdress(deliveryAdress) {
     await this.deliveryAdressInput.fill(deliveryAdress);
   }

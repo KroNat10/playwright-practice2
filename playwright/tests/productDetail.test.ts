@@ -4,9 +4,6 @@ import { ProductDetailPage } from '../pages/productDetailPage';
 
 test.describe('Product detail test', async () => {
   test('Product detail test', async ({ page }) => {
-    const homePage = new HomePage(page);
-    const productDetailPage = new ProductDetailPage(page);
-
     await test.step('Go to home page', async () => {
       const homePage = new HomePage(page);
 
